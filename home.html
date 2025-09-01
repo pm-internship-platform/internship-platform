@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InternHub - Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .dashboard-content { display: none; }
+    .dashboard-content.active { display: block; }
+    .sidebar-item { cursor: pointer; }
+  </style>
+</head>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+
+  <!-- Navbar include -->
+  <div data-include="navbar.html"></div>
+
+  <!-- Custom Dashboard Navbar Info -->
+  <div class="w3-bar w3-teal w3-small w3-padding">
+    <span class="w3-bar-item">Logged in as <b>John Doe</b></span>
+    <span class="w3-bar-item">Login time: <span id="loginTime"></span></span>
+    <a href="login.html" class="w3-bar-item w3-button w3-right w3-red">Logout</a>
+  </div>
+
+  <!-- Sidebar -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:250px;" id="mySidebar"><br>
+    <div class="w3-container">
+      <h4><b>Dashboard</b></h4>
+    </div>
+    <div class="w3-bar-block">
+      <a class="w3-bar-item w3-button sidebar-item" onclick="showContent('details')">1. Fill Out Details</a>
+      <a class="w3-bar-item w3-button sidebar-item" onclick="showContent('certificates')">2. Upload Certificates</a>
+      <a class="w3-bar-item w3-button sidebar-item" onclick="showContent('mock')">3. Mock Assessment</a>
+      <a class="w3-bar-item w3-button sidebar-item" onclick="showContent('test1')">4. Test 1</a>
+      <a class="w3-bar-item w3-button sidebar-item" onclick="showContent('test2')">5. Test 2</a>
+      <a class="w3-bar-item w3-button sidebar-item" onclick="showContent('test3')">6. Test 3</a>
+      <a class="w3-bar-item w3-button sidebar-item" onclick="showContent('results')">7. Results & Ranking</a>
+    </div>
+  </nav>
+
+  <!-- Overlay effect on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" id="myOverlay"></div>
+
+  <!-- Main content -->
+  <div class="w3-main" style="margin-left:250px">
+
+    <div class="w3-container w3-padding">
+      <h2>Welcome to Your Dashboard</h2>
+      <p>Select an item from the sidebar to get started.</p>
+    </div>
+
+    <!-- Sections -->
+    <div id="details" class="w3-container dashboard-content">
+      <h3>Fill Out Details</h3>
+      <form class="w3-container">
+        <p><label>Name</label><input class="w3-input w3-border" type="text"></p>
+        <p><label>Email</label><input class="w3-input w3-border" type="email"></p>
+        <p><label>Phone</label><input class="w3-input w3-border" type="text"></p>
+        <button class="w3-button w3-teal">Save</button>
+      </form>
+    </div>
+
+    <div id="certificates" class="w3-container dashboard-content">
+      <h3>Upload Certificates</h3>
+      <input type="file" multiple class="w3-input w3-border">
+      <button class="w3-button w3-teal w3-margin-top">Upload</button>
+    </div>
+
+    <div id="mock" class="w3-container dashboard-content">
+      <h3>Mock Assessment</h3>
+      <p>This section will contain mock assessment questions.</p>
+      <textarea class="w3-input w3-border" placeholder="Answer here..."></textarea>
+      <button class="w3-button w3-teal w3-margin-top">Submit</button>
+    </div>
+
+    <div id="test1" class="w3-container dashboard-content">
+      <h3>Test 1</h3>
+      <table class="w3-table-all">
+        <tr><th>Question</th><th>Your Answer</th></tr>
+        <tr><td>What is HTML?</td><td><input class="w3-input w3-border"></td></tr>
+      </table>
+      <button class="w3-button w3-teal w3-margin-top">Submit</button>
+    </div>
+
+    <div id="test2" class="w3-container dashboard-content">
+      <h3>Test 2</h3>
+      <p>Same structure as Test 1</p>
+    </div>
+
+    <div id="test3" class="w3-container dashboard-content">
+      <h3>Test 3</h3>
+      <p>Same structure as Test 1</p>
+    </div>
+
+    <div id="results" class="w3-container dashboard-content">
+      <h3>Results & Ranking</h3>
+      <table class="w3-table-all">
+        <tr><th>Test</th><th>Score</th></tr>
+        <tr><td>Mock</td><td>85%</td></tr>
+        <tr><td>Test 1</td><td>78%</td></tr>
+        <tr><td>Test 2</td><td>82%</td></tr>
+        <tr><td>Test 3</td><td>90%</td></tr>
+      </table>
+      <p><b>Overall Rank:</b> #12</p>
+    </div>
+
+    <!-- Footer include -->
+    <div data-include="footer.html"></div>
+
+  </div>
+
+<script src="include.js"></script>
+<script>
+  // Switch dashboard content
+  function showContent(id) {
+    document.querySelectorAll('.dashboard-content').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  // Show login time
+  document.getElementById("loginTime").innerText = new Date().toLocaleString();
+
+  // Sidebar toggle (mobile)
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+</script>
+</body>
+</html>

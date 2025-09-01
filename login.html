@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -20,7 +21,7 @@ html,body{
   display: grid;
   height: 100%;
   width: 100%;
-  place-items: center;
+  /* place-items: center; */
   background: -webkit-linear-gradient(left, #003366,#004080,#0059b3
 , #0073e6);
 }
@@ -33,6 +34,8 @@ html,body{
   max-width: 390px;
   background: #fff;
   padding: 30px;
+  margin-top: 5%;
+  margin-bottom: 5%;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
@@ -203,28 +206,10 @@ body, html {height: 100%; line-height: 1.8;}
 </head>
 <body>
 
-    <!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-card" id="myNavbar">
-    <a href="index.html" class="w3-bar-item w3-button w3-wide">InternHub</a>
-    <div class="w3-right w3-hide-small">
-      <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-user"></i> Login</a>
-    </div>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-      <i class="fa fa-bars"></i>
-    </a>
-  </div>
-</div>
+<!-- Navbar include -->
+<div data-include="navbar.html"></div>
 
-<!-- Sidebar for mobile -->
-<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
-  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">SUCCESS STORIES</a>
-  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-</nav>
-
+    <span style="width: 100%; place-items: center;">
       <div class="wrapper">
       <div class="title-text">
         <div class="title login">Login Form</div>
@@ -249,7 +234,7 @@ body, html {height: 100%; line-height: 1.8;}
             <div class="pass-link"><a href="#">Forgot password?</a></div>
             <div class="field btn">
               <div class="btn-layer"></div>
-              <input type="submit" value="Login">
+              <input type="submit" value="Login" href="home.html" onclick="window.location.href='home.html'">
             </div>
             <div class="signup-link">Not a member? <a href="">Signup now</a></div>
           </form>
@@ -265,27 +250,13 @@ body, html {height: 100%; line-height: 1.8;}
             </div>
             <div class="field btn">
               <div class="btn-layer"></div>
-              <input value="Signup" href="home.html">
+              <input value="Signup" type="submit" href="home.html" onclick="window.location.href='home.html'">
             </div>
           </form>
         </div>
       </div>
     </div>
-
-    <footer class="w3-center w3-black w3-padding-64">
-  <!-- <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up"></i> To the top</a> -->
-  <div class="w3-xlarge w3-section">
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-  </div>
-  <p>© 2025 InternHub. All Rights Reserved.</p>
-</footer>
-
-<script>
-var mySidebar = document.getElementById("mySidebar");
-function w3_open() { mySidebar.style.display = (mySidebar.style.display === 'block') ? 'none' : 'block'; }
-function w3_close() { mySidebar.style.display = "none"; }
-</script>
+  </span>
 
     <script>
          const loginText = document.querySelector(".title-text .login");
@@ -307,5 +278,11 @@ function w3_close() { mySidebar.style.display = "none"; }
       });
 
     </script>
+
+    
+<!-- Footer include -->
+<div data-include="footer.html"></div>
+
+<script src="include.js"></script>
 </body>
 </html>
